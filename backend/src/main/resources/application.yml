@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: backend
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5433/immortal_db?options=-c%20timezone=UTC
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
+security:
+  jwt:
+    secret-key: 4d2843b0d2d31295283f60f607c390a19e599b1a0e9faaf6cd6b4886ccdf1a41
+    expiration-time: 86400000 # 24 hours
+
+judge0:
+  api-url: ${JUDGE0_API_URL:http://localhost:2358}
+  api-host: ${JUDGE0_API_HOST:localhost}
+  api-key: ${JUDGE0_API_KEY:} 
+
+server:
+  port: 8081
